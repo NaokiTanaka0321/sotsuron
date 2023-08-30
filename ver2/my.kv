@@ -1,0 +1,693 @@
+#: import SoundLoader kivy.core.audio.SoundLoader
+
+<SelectSounds>:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: '録音音源選択'
+                    with_previous: False
+
+        Label:
+            id: select_sounds_display
+            text: "録音音源を選んでください。"
+
+
+        BoxLayout:
+            
+            Label:
+                id: air_voice
+                text: root.air
+
+            Button:
+                text: "気導音を選択"
+                on_release: root.filechoose_air()
+
+        BoxLayout:
+            
+            Label:
+                id: ear_voice
+                text: root.ear
+
+            Button:
+                text: "耳骨導音を選択"
+                on_release: root.filechoose_ear()
+
+        BoxLayout:
+            
+            Label:
+                id: throat_voice
+                text: root.throat
+
+            Button:
+                text: "喉骨導音を選択"
+                on_release: root.filechoose_throat()
+
+        Button:
+            text: "選択完了 音源評価に進む"
+            on_press: root.display()
+            on_release: root.generate()
+
+<Filechooser_Air>:
+    cols: 2
+    id: select_sounds_air
+
+    FileChooserListView:
+        id: filechooser_air
+        on_selection: root.selected(filechooser_air.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<Filechooser_Ear>:
+    cols: 2
+    id: select_sounds_ear
+
+    FileChooserListView:
+        id: filechooser_ear
+        on_selection: root.selected(filechooser_ear.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<Filechooser_Throat>:
+    cols: 2
+    id: select_sounds_throat
+
+    FileChooserListView:
+        id: filechooser_throat
+        on_selection: root.selected(filechooser_throat.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<Howtouse>:
+    Label:
+        text: "まずは録音音源を選んでください。"
+
+
+<SoundPlayer_body>:
+    orientation: 'vertical'
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: '体内音音源評価'
+                    with_previous: False
+
+
+        BoxLayout:
+            size_hint_y: 0.2
+
+            Label:
+                size_hint_x: 0.2
+
+            Label:
+                size_hint_x: 0.6
+                id: label1
+                text: root.text
+
+            Button:
+                size_hint_x: 0.2
+                text: "体内音完成"
+                on_release: root.Actionchange_end()
+
+
+        BoxLayout:
+            size_hint_y: 0.8 
+            orientation: 'vertical'
+
+            BoxLayout:
+
+                Label:
+                    id: body1
+                    font_size: 30
+                    text: "体内音1"
+                    size_hint_x: 1.5
+                    
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body1.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(1,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(1,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(1,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(1,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(1,5)
+
+                Label:
+                    id: body1_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body2
+                    font_size: 30
+                    text: "体内音2"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(2);
+                        root.sound = SoundLoader.load('body2.wav');
+                        root.play_sound(2)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(2)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(2,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(2,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(2,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(2,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(2,5)
+
+                Label:
+                    id: body2_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body3
+                    font_size: 30
+                    text: "体内音3"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(3)
+                        root.sound = SoundLoader.load('body3.wav');
+                        root.play_sound(3)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(3,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(3,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(3,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(3,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(3,5)
+
+                Label:
+                    id: body3_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body4
+                    font_size: 30
+                    text: "体内音4"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body4.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(4)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(4,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(4,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(4,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(4,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(4,5)
+
+                Label:
+                    id: body4_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body5
+                    font_size: 30
+                    text: "体内音5"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body5.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(5,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(5,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(5,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(5,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(5,5)
+
+                Label:
+                    id: body5_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body6
+                    font_size: 30
+                    text: "体内音6"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body6.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(6,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(6,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(6,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(6,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(6,5)
+
+                Label:
+                    id: body6_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body7
+                    font_size: 30
+                    text: "体内音7"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body7.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(7,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(7,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(7,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(7,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(7,5)
+
+                Label:
+                    id: body7_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+
+                Label:
+                    id: body8
+                    font_size: 30
+                    text: "体内音8"
+                    size_hint_x: 1.5
+
+                Button:
+                    text: "Play"
+                    on_press: 
+                        root.stop_sound(1)
+                        root.sound = SoundLoader.load('body8.wav');
+                        root.play_sound(1)
+
+                Button:
+                    text: "stop"
+                    on_press: root.stop_sound(1)
+
+                Button:
+                    text: "1"
+                    on_press: root.evaluation(8,1)
+
+                Button:
+                    text: "2"
+                    on_press: root.evaluation(8,2)
+
+                Button:
+                    text: "3"
+                    on_press: root.evaluation(8,3)
+
+                Button:
+                    text: "4"
+                    on_press: root.evaluation(8,4)
+                
+                Button:
+                    text: "5"
+                    on_press: root.evaluation(8,5)
+
+                Label:
+                    id: body8_view
+                    font_size: 40
+                    text: "-"
+
+            BoxLayout:
+                
+                Button:
+                    text: "次の世代に進む"
+                    on_release: 
+                        evaluation_list = root.ok();
+                        root.next_epoch(evaluation_list)
+
+<End_body>:
+    orientation: 'vertical'
+
+    ActionBar:
+        ActionView:
+            ActionPrevious:
+                title: '体内音完成'
+                with_previous: False
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Label:
+            size_hint_y: 0.2
+            id: label1
+            text: "十分体内音に近いと思う音を選んでください。"
+
+
+        BoxLayout:
+            size_hint_y: 0.3
+
+            Label:
+                size_hint_x: 0.3
+
+            Label:
+                size_hint_x: 0.4
+                id: aaa
+                font_size: 68
+                text: "-"
+
+            Button:
+                size_hint_x: 0.1
+                id: bbb
+                text: "OK"
+                on_press: root.to_myvoice_text()
+                on_release: root.to_myvoice()
+
+            Button:
+                size_hint_x: 0.2
+                id: ccc
+                text: "音源評価に戻る"
+                on_release: root.Actionchange_main()
+
+        
+
+
+        Label:
+            size_hint_y: 0.2
+
+        GridLayout:
+            cols: 4
+            rows: 2
+            size_hint_y: 0.3
+
+            pos_hint: {'center_x':0.5, 'center_y':0.5}
+            size_hint_x: 0.4
+
+            Button:
+                text: "体内音1"
+                on_press: root.display_num(1)
+
+            Button:
+                text: "体内音2"
+                on_press: root.display_num(2)
+
+            Button:
+                text: "体内音3"
+                on_press: root.display_num(3)
+
+            Button:
+                text: "体内音4"
+                on_press: root.display_num(4)
+
+            Button:
+                text: "体内音5"
+                on_press: root.display_num(5)
+
+            Button:
+                text: "体内音6"
+                on_press: root.display_num(6)
+
+            Button:
+                text: "体内音7"
+                on_press: root.display_num(7)
+
+            Button:
+                text: "体内音8"
+                on_press: root.display_num(8)
+
+        Label:
+            size_hint_y: 0.2
+
+<SoundPlayer_myvoice>:
+    orientation: 'vertical'
+
+    ActionBar:
+        ActionView:
+            ActionPrevious:
+                title: '自己聴取音完成'
+                with_previous: False
+
+
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size
+
+        Label:
+            size_hint_y: 0.2
+            id: label1
+            text: "一番自己聴取音に近いと思う音を選んでください。"
+            font_size: 40
+
+
+        BoxLayout:
+            size_hint_y: 0.2
+
+            Label:
+                size_hint_x: 0.3
+
+            Label:
+                size_hint_x: 0.4
+                id: aaa
+                font_size: 68
+                text: "-"
+
+            Button:
+                size_hint_x: 0.3
+                id: bbb
+                text: "OK"
+                on_release: root.app_end()
+
+        
+
+
+        Label:
+            size_hint_y: 0.05
+
+        BoxLayout:
+            size_hint_y: 0.2
+
+            Label:
+                size_hint_x: 1
+            
+            Button:
+                size_hint_x: 1
+                text: "Play"
+                on_release: root.play_sound()
+
+            Button:
+                size_hint_x: 1
+                text: "Stop"
+                on_release: root.stop_sound()
+
+            Label:
+                size_hint_x: 1
+            
+        Label:
+            size_hint_y: 0.05
+
+
+        GridLayout:
+            cols: 3
+            rows: 2
+            size_hint_y: 0.3
+
+            pos_hint: {'center_x':0.5, 'center_y':0.5}
+            size_hint_x: 0.4
+
+            Button:
+                text: "自己聴取音1"
+                on_press: 
+                    root.display_num(1);
+                    root.sound = SoundLoader.load('myvoice1.wav')
+
+            Button:
+                text: "自己聴取音2"
+                on_press: 
+                    root.display_num(2);
+                    root.sound = SoundLoader.load('myvoice2.wav')
+
+            Button:
+                text: "自己聴取音3"
+                on_press: 
+                    root.display_num(3);
+                    root.sound = SoundLoader.load('myvoice3.wav')
+
+            Button:
+                text: "自己聴取音4"
+                on_press: 
+                    root.display_num(4);
+                    root.sound = SoundLoader.load('myvoice4.wav')
+
+            Button:
+                text: "自己聴取音5"
+                on_press: 
+                    root.display_num(5);
+                    root.sound = SoundLoader.load('myvoice5.wav')
+
+            Button:
+                text: "自己聴取音6"
+                on_press: 
+                    root.display_num(6);
+                    root.sound = SoundLoader.load('myvoice6.wav')
+
+        Label:
+            size_hint_y: 0.2

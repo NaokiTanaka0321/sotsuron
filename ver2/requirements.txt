@@ -1,0 +1,10 @@
+pygame
+cython
+kivy[base]
+librosa
+soundfile
+numpy=1.18.1
+numba=0.48.0
+matplotlib
+pydub
+ffmpeg-python

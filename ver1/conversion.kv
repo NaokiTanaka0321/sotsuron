@@ -1,0 +1,141 @@
+#: import SoundLoader kivy.core.audio.SoundLoader
+
+<SelectSounds>:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: '録音音源選択'
+                    with_previous: False
+
+                
+        Label:
+            id: select_sounds_display
+            text: "録音音源を選んでください。"
+
+
+        BoxLayout:
+            
+            Label:
+                id: air_voice
+                text: root.air
+
+            Button:
+                text: "気導音を選択"
+                on_release: root.filechoose_air()
+
+        BoxLayout:
+            
+            Label:
+                id: ear_voice
+                text: root.ear
+
+            Button:
+                text: "耳骨導音を選択"
+                on_release: root.filechoose_ear()
+
+        BoxLayout:
+            
+            Label:
+                id: throat_voice
+                text: root.throat
+
+            Button:
+                text: "喉骨導音を選択"
+                on_release: root.filechoose_throat()
+
+        Button:
+            text: "選択完了 パラメーターを選択"
+            on_release: root.to_params()
+
+<Filechooser_Air>:
+    cols: 2
+    id: select_sounds_air
+
+    FileChooserListView:
+        id: filechooser_air
+        on_selection: root.selected(filechooser_air.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<Filechooser_Ear>:
+    cols: 2
+    id: select_sounds_ear
+
+    FileChooserListView:
+        id: filechooser_ear
+        on_selection: root.selected(filechooser_ear.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<Filechooser_Throat>:
+    cols: 2
+    id: select_sounds_throat
+
+    FileChooserListView:
+        id: filechooser_throat
+        on_selection: root.selected(filechooser_throat.selection)
+        rootpath: './'
+        #filters: ['.*wav']
+
+<SelectParams>:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        ActionBar:
+            ActionView:
+                ActionPrevious:
+                    title: '録音音源選択'
+                    with_previous: False
+
+                
+        Label:
+            id: select_params_display
+            text: "パラメーターを選んでください。"
+
+        BoxLayout:
+            
+            Label:
+                id: body_params
+                text: root.body
+
+            Button:
+                text: "体内音のパラメーターを選択"
+                on_release: root.filechoose_body()
+
+        BoxLayout:
+            
+            Label:
+                id: myvoice_param
+                text: root.myvoice
+
+            Button:
+                text: "自己聴取音のパラメーターを選択"
+                on_release: root.filechoose_myvoice()
+
+        Button:
+            text: "選択完了 体内音/自己聴取音を生成する"
+            on_press: root.display()
+            on_release: root.conversion()
+
+<Filechooser_body>:
+    cols: 2
+    id: select_sounds_body
+
+    FileChooserListView:
+        id: filechooser_body
+        on_selection: root.selected(filechooser_body.selection)
+        rootpath: './'
+
+<Filechooser_myvoice>:
+    cols: 2
+    id: select_sounds_myvoice
+
+    FileChooserListView:
+        id: filechooser_myvoice
+        on_selection: root.selected(filechooser_myvoice.selection)
+        rootpath: './'
